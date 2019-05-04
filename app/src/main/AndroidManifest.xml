@@ -31,6 +31,7 @@
         </activity>
 
         <activity android:name="com.ysq.nurse.MainActivity" />
+        <activity android:name="com.ysq.nurse.ui.LoginActivity" />
 
     </application>
 

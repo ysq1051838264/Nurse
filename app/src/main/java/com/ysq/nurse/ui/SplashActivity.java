@@ -34,13 +34,13 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        Observable.timer(1500, TimeUnit.MILLISECONDS)
+        Observable.timer(1000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableObserver<Long>() {
                     @Override
                     public void onNext(Long aLong) {
-                        JumpUtil.overlay(SplashActivity.this, MainActivity.class);
+                        JumpUtil.overlay(SplashActivity.this, LoginActivity.class);
                         finish();
                     }
 
