@@ -1,12 +1,11 @@
 package com.ysq.nurse.ui;
 
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.ysq.nurse.MainActivity;
 import com.ysq.nurse.R;
 import com.ysq.nurse.base.BaseActivity;
+import com.ysq.nurse.ui.login.LoginActivity;
 import com.ysq.nurse.util.JumpUtil;
 
 import java.util.concurrent.TimeUnit;

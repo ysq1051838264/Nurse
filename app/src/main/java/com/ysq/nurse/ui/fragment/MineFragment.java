@@ -2,10 +2,9 @@ package com.ysq.nurse.ui.fragment;
 
 import android.view.View;
 
-import com.ysq.nurse.MainActivity;
 import com.ysq.nurse.R;
 import com.ysq.nurse.base.BaseFragment;
-import com.ysq.nurse.ui.LoginActivity;
+import com.ysq.nurse.ui.login.LoginActivity;
 import com.ysq.nurse.util.JumpUtil;
 
 import butterknife.OnClick;
