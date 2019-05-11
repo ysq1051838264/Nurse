@@ -3,6 +3,7 @@ package com.ysq.nurse.ui;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.ysq.nurse.MainActivity;
 import com.ysq.nurse.R;
 import com.ysq.nurse.base.BaseActivity;
 import com.ysq.nurse.ui.login.LoginActivity;
@@ -39,7 +40,8 @@ public class SplashActivity extends BaseActivity {
                 .subscribeWith(new DisposableObserver<Long>() {
                     @Override
                     public void onNext(Long aLong) {
-                        JumpUtil.overlay(SplashActivity.this, LoginActivity.class);
+                        JumpUtil.overlay(SplashActivity.this, MainActivity.class);
+//                        JumpUtil.overlay(SplashActivity.this, LoginActivity.class);
                         finish();
                     }
 

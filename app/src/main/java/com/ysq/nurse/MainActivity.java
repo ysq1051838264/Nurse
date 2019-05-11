@@ -140,7 +140,7 @@ public class MainActivity extends BaseActivity {
                 .onGranted(new Action() {
                     @Override
                     public void onAction(List<String> permissions) {
-                        ToastUtil.show(activity, "用户给权限啦");
+//                        ToastUtil.show(activity, "用户给权限啦");
                     }
                 })
                 .onDenied(new Action() {
@@ -151,7 +151,7 @@ public class MainActivity extends BaseActivity {
                             AndPermission.permissionSetting(activity).execute();
                             return;
                         }
-                        ToastUtil.show(activity, "用户拒绝权限");
+//                        ToastUtil.show(activity, "用户拒绝权限");
                     }
                 }).start();
     }
