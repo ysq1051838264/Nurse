@@ -21,6 +21,8 @@
     <color name="dark_line">#5b5b5b</color>
     <color name="sign">#ffdb80</color>
 
+    <color name="news_tv_source_color">#a3a3a3</color>
+
     <color name="white_255">#ffffff</color>
     <color name="white_90">#efff</color>
     <color name="white_15">#2fff</color><!--纯白-->

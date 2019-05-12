@@ -39,6 +39,7 @@ import com.ysq.nurse.comm.ObserverManager;
 import com.ysq.nurse.ui.data.DetailActivity;
 import com.ysq.nurse.util.JumpUtil;
 import com.ysq.nurse.util.TitleBar;
+import com.ysq.nurse.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +64,8 @@ public class HomeFragment extends BaseFragment {
     private ProgressDialog progressDialog;
     private Animation operatingAnim;
     private DeviceAdapter mDeviceAdapter;
+
+    BleDevice ble;
 
     public static HomeFragment getInstance() {
         return new HomeFragment();
@@ -94,6 +97,7 @@ public class HomeFragment extends BaseFragment {
         mDeviceAdapter.setOnDeviceClickListener(new DeviceAdapter.OnDeviceClickListener() {
             @Override
             public void onConnect(BleDevice bleDevice) {
+                ble = bleDevice;
                 if (!BleManager.getInstance().isConnected(bleDevice)) {
                     BleManager.getInstance().cancelScan();
                     connect(bleDevice);
@@ -122,7 +126,7 @@ public class HomeFragment extends BaseFragment {
     private void initAd() {
         List<String> notices = new ArrayList<>();
         notices.add("本月出勤30次,完成服务80次");
-        notices.add("你今天有工作，请按时出勤¬");
+        notices.add("你今天有工作，请按时出勤");
         marqueeView.startMarquee(notices);
     }
 
@@ -130,7 +134,12 @@ public class HomeFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn:
-                JumpUtil.overlay(getContext(), DetailActivity.class);
+                if (ble != null && BleManager.getInstance().isConnected(ble)) {
+                    Intent intent = new Intent(getContext(), DetailActivity.class);
+                    intent.putExtra(DetailActivity.KEY_DATA, ble);
+                    startActivity(intent);
+                } else
+                    ToastUtil.showLong(getContext(), "请先连接手环，在打卡");
                 break;
             case R.id.btn_scan:
                 if (btn_scan.getText().equals(getString(R.string.start_scan))) {

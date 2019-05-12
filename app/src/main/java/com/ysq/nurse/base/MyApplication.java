@@ -5,6 +5,8 @@ import android.app.Application;
 import com.ysq.nurse.util.log.CrashHandler2;
 import com.ysq.nurse.util.log.LogcatHelper;
 
+import org.litepal.LitePal;
+
 
 /**
  * application
@@ -27,6 +29,8 @@ public class MyApplication extends Application {
         LogcatHelper.getInstance(this).start();
         // 初始化 抓取 异常信息
         CrashHandler2.getInstance().init(this);
+
+        LitePal.initialize(this);
     }
 
     public static synchronized MyApplication getInstance() {

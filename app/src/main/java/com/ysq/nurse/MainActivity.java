@@ -17,7 +17,7 @@ import com.yanzhenjie.permission.RequestExecutor;
 import com.ysq.nurse.base.BaseActivity;
 import com.ysq.nurse.ui.fragment.HomeFragment;
 import com.ysq.nurse.ui.fragment.MineFragment;
-import com.ysq.nurse.ui.fragment.NewsFragment;
+import com.ysq.nurse.ui.news.NewsFragment;
 import com.ysq.nurse.util.BottomNavigationViewHelper;
 import com.ysq.nurse.util.ConstantUtil;
 import com.ysq.nurse.util.SharedPreferenceUtil;
