@@ -34,7 +34,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public void goMain() {
         JumpUtil.overlay(LoginActivity.this, MainActivity.class);
         finish();
-        presenter.login("1111111111", "11111111");
+//        presenter.login("1111111111", "11111111");
     }
 
     @Override

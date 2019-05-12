@@ -40,8 +40,8 @@ public class SplashActivity extends BaseActivity {
                 .subscribeWith(new DisposableObserver<Long>() {
                     @Override
                     public void onNext(Long aLong) {
-                        JumpUtil.overlay(SplashActivity.this, MainActivity.class);
-//                        JumpUtil.overlay(SplashActivity.this, LoginActivity.class);
+//                        JumpUtil.overlay(SplashActivity.this, MainActivity.class);
+                        JumpUtil.overlay(SplashActivity.this, LoginActivity.class);
                         finish();
                     }
 

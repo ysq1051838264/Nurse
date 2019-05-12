@@ -1,6 +1,8 @@
 package com.ysq.nurse.ui.data;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +16,11 @@ import com.clj.fastble.utils.HexUtil;
 import com.openxu.cview.chart.barchart.BarHorizontalChart;
 import com.openxu.cview.chart.bean.BarBean;
 import com.openxu.utils.DensityUtil;
+import com.ysq.nurse.MainActivity;
 import com.ysq.nurse.R;
 import com.ysq.nurse.base.BaseActivity;
+import com.ysq.nurse.ui.login.LoginActivity;
+import com.ysq.nurse.util.JumpUtil;
 import com.ysq.nurse.util.TitleBar;
 import com.ysq.nurse.util.ToastUtil;
 
@@ -24,6 +29,7 @@ import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class DetailActivity extends BaseActivity {
     public static final String KEY_DATA = "key_data";
@@ -199,16 +205,62 @@ public class DetailActivity extends BaseActivity {
         chart1.setLoading(false);
         chart1.setData(dataList, strXList);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<BarBean> li = new ArrayList<>();
-                BarBean b = new BarBean(random.nextInt(60), "lable1");
-                li.add(b);
-                dataList.set(4, li);
-                chart1.setData(dataList, strXList);
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                List<BarBean> li = new ArrayList<>();
+//                BarBean b = new BarBean(random.nextInt(60), "lable1");
+//                li.add(b);
+//                dataList.set(4, li);
+//                chart1.setData(dataList, strXList);
+//            }
+//        });
+    }
+
+
+    @OnClick(R.id.btn)
+    public void goMain() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("您确定要结束服务么？")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        cancel();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        builder.create().show();
+    }
+
+    public void cancel() {
+        byte[] input = {0x3c, 0x3c, 0x31, 0x30, 0x30, 0x3e, 0x3e};
+        ToastUtil.showShort(this, "本次服务已结束");
+        BleManager.getInstance().write(
+                bleDevice,
+                UUID_SERVICE,
+                UUID_CHARACTERISTIC_WRITE,
+                input,
+                new BleWriteCallback() {
+                    @Override
+                    public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
+                        Log.e("ysq监听", "写入数据成功了");
+                        finish();
+                    }
+
+                    @Override
+                    public void onWriteFailure(final BleException exception) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.e("ysq监听", "写入数据失败了");
+                            }
+                        });
+                    }
+                });
     }
 
 
