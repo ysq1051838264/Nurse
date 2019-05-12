@@ -134,23 +134,23 @@ public class DetailActivity extends BaseActivity {
     public void notifyData(int type) {
         switch (type) {
             case 49:
-                ToastUtil.show(this, "拍背");
+                ToastUtil.showLong(this, "拍背");
 //                strXList.add("拍背");
                 break;
             case 50:
-                ToastUtil.show(this, "刷床单");
+                ToastUtil.showLong(this, "刷床单");
 //                strXList.add("刷床单");
                 break;
             case 51:
-                ToastUtil.show(this, "转床单");
+                ToastUtil.showLong(this, "转床单");
 //                strXList.add("转床单");
                 break;
             case 52:
-                ToastUtil.show(this, "擦胳膊");
+                ToastUtil.showLong(this, "擦胳膊");
 //                strXList.add("擦胳膊");
                 break;
             case 53:
-                ToastUtil.show(this, "梳头");
+                ToastUtil.showLong(this, "梳头");
 //                strXList.add("梳头");
                 break;
         }
