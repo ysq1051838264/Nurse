@@ -60,7 +60,7 @@ public class DetailActivity extends BaseActivity {
         if (bleDevice == null)
             return;
 
-//        initChartView();
+        initChartView();
 
         byte[] input = {0x3c, 0x3c, 0x31, 0x31, 0x30, 0x3e, 0x3e};
 

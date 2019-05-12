@@ -37,7 +37,6 @@ import com.ysq.nurse.adapter.DeviceAdapter;
 import com.ysq.nurse.base.BaseFragment;
 import com.ysq.nurse.comm.ObserverManager;
 import com.ysq.nurse.ui.data.DetailActivity;
-import com.ysq.nurse.util.JumpUtil;
 import com.ysq.nurse.util.TitleBar;
 import com.ysq.nurse.util.ToastUtil;
 
