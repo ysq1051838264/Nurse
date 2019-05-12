@@ -1,18 +1,17 @@
 <resources>
-    <string name="app_name">Nurse</string>
+    <string name="app_name">护工</string>
 
     <string name="title_home">首页</string>
-    <string name="title_system">咨询</string>
+    <string name="title_system">资讯</string>
     <string name="title_wx">公众号</string>
     <string name="title_demo">项目</string>
     <string name="title_mine">我的</string>
 
 
-    <string name="click_head_login">点击头像登录</string>
-    <string name="my_collect">我的收藏</string>
-    <string name="wx_list">微信公众号</string>
-    <string name="my_todo">todo工具</string>
-    <string name="about_us">关于我们</string>
+    <string name="click_head_login">用户昵称</string>
+    <string name="my_collect">个人信息</string>
+    <string name="my_todo">本月考勤</string>
+    <string name="about_us">历史服务</string>
     <string name="logout">退出登录</string>
 
 
@@ -51,7 +50,7 @@
     <string name="connect">连接</string>
     <string name="connected">已连接</string>
     <string name="disconnect">断开连接</string>
-    <string name="enter">进入操作</string>
+    <string name="enter">开始服务</string>
 
 
 </resources>

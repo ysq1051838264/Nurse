@@ -44,6 +44,21 @@ public class TitleBar {
         return this;
     }
 
+    /**
+     * 用于设置标题栏文字
+     */
+    public TitleBar setTitleText(String titleText,Boolean f) {
+            if (f)
+                leftIco.setVisibility(View.VISIBLE);
+            else
+                leftIco.setVisibility(View.GONE);
+
+        if (!TextUtils.isEmpty(titleText)) {
+            text.setText(titleText);
+        }
+        return this;
+    }
+
     public TitleBar setTextListening(View.OnClickListener listener) {
         if (text.getVisibility() == View.VISIBLE) {
             text.setOnClickListener(listener);

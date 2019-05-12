@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.bx.marqueeviewlibrary.MarqueeView;
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleGattCallback;
 import com.clj.fastble.callback.BleScanCallback;
@@ -37,6 +38,7 @@ import com.ysq.nurse.base.BaseFragment;
 import com.ysq.nurse.comm.ObserverManager;
 import com.ysq.nurse.ui.data.DetailActivity;
 import com.ysq.nurse.util.JumpUtil;
+import com.ysq.nurse.util.TitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +57,8 @@ public class HomeFragment extends BaseFragment {
     ImageView img_loading;
     @BindView(R.id.btn_scan)
     Button btn_scan;
+    @BindView(R.id.marqueeview)
+    MarqueeView marqueeView;
 
     private ProgressDialog progressDialog;
     private Animation operatingAnim;
@@ -71,6 +75,10 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        new TitleBar(getActivity()).setTitleText("首页", false);
+
+        initAd();
+
         BleManager.getInstance().init(context);
         BleManager.getInstance()
                 .enableLog(true)
@@ -109,6 +117,13 @@ public class HomeFragment extends BaseFragment {
             }
         });
         listView_device.setAdapter(mDeviceAdapter);
+    }
+
+    private void initAd() {
+        List<String> notices = new ArrayList<>();
+        notices.add("本月出勤30次,完成服务80次");
+        notices.add("你今天有工作，请按时出勤¬");
+        marqueeView.startMarquee(notices);
     }
 
     @OnClick({R.id.btn, R.id.btn_scan})

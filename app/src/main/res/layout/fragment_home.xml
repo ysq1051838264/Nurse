@@ -4,21 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/title"
+        layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ico_news" />
+
+        <com.bx.marqueeviewlibrary.MarqueeView
+            android:id="@+id/marqueeview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mvAnimDuration="800"
+            app:mvInterval="1500"
+            app:mvTextColor="#000"
+            app:mvTextSize="5sp" />
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/scan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/ad">
 
         <Button
             android:id="@+id/btn_scan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            style="@style/red_bg"
+            android:layout_centerHorizontal="true"
             android:text="@string/start_scan" />
 
         <ImageView
@@ -46,9 +75,10 @@
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="查看详细 "
+        style="@style/theme_bg"
+        android:layout_marginTop="10dp"
+        android:text="开始服务(打卡)"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_device" />
 

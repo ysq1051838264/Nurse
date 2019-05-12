@@ -38,7 +38,7 @@
                         android:layout_width="@dimen/dp_80"
                         android:layout_height="@dimen/dp_80"
                         android:layout_centerInParent="true"
-                        android:src="@color/white_255" />
+                        android:src="@drawable/boy" />
                 </RelativeLayout>
 
                 <TextView
@@ -68,7 +68,7 @@
                 android:layout_height="@dimen/dp_20"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/dp_16"
-                app:srcCompat="@drawable/icon_no_collect_gray" />
+                app:srcCompat="@drawable/ic_group_gray_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -140,7 +140,7 @@
             android:layout_height="@dimen/dp_1"
             android:background="@color/white_30" />
 
-        <!--关于我们-->
+        <!--历史服务-->
         <RelativeLayout
             android:id="@+id/view_about"
             android:layout_width="match_parent"
@@ -154,7 +154,7 @@
                 android:layout_height="@dimen/dp_20"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/dp_16"
-                app:srcCompat="@drawable/ic_group_gray_24dp" />
+                app:srcCompat="@drawable/icon_no_collect_gray" />
 
             <TextView
                 android:layout_width="wrap_content"

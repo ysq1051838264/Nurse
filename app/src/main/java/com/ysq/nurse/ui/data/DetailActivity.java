@@ -17,6 +17,7 @@ import com.openxu.utils.DensityUtil;
 import com.ysq.nurse.R;
 import com.ysq.nurse.base.BaseActivity;
 import com.ysq.nurse.util.TitleBar;
+import com.ysq.nurse.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,13 +60,15 @@ public class DetailActivity extends BaseActivity {
         if (bleDevice == null)
             return;
 
-        initChartView();
+//        initChartView();
+
+        byte[] input = {0x3c, 0x3c, 0x31, 0x31, 0x30, 0x3e, 0x3e};
 
         BleManager.getInstance().write(
                 bleDevice,
                 UUID_SERVICE,
                 UUID_CHARACTERISTIC_WRITE,
-                HexUtil.hexStringToBytes("<<110>>"),
+                input,
                 new BleWriteCallback() {
                     @Override
                     public void onWriteSuccess(final int current, final int total, final byte[] justWrite) {
@@ -80,8 +83,8 @@ public class DetailActivity extends BaseActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
+                                                ToastUtil.showLong(getBaseContext(), "请短按手环1秒，绿灯闪烁之后，开始工作");
                                                 Log.e("ysq监听", "监听通知成功");
-//                                                addText(txt, "notify success");
                                             }
                                         });
                                     }
@@ -102,8 +105,13 @@ public class DetailActivity extends BaseActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Log.e("ysq监听到数据:", "HexUtil.formatHexString(data, true)");
-//                                                addText(txt, HexUtil.formatHexString(characteristic.getValue(), true));
+                                                Log.e("ysq监听到数据:", HexUtil.formatHexString(data, true));
+
+                                                //监听到数据:: 3c 3c 32 34 30 3e 3e
+                                                //（例："<<220>>"代表动作2，刷床单）
+                                                if (data.length > 5) {
+                                                    notifyData(data[3]);
+                                                }
                                             }
                                         });
                                     }
@@ -121,6 +129,31 @@ public class DetailActivity extends BaseActivity {
                         });
                     }
                 });
+    }
+
+    public void notifyData(int type) {
+        switch (type) {
+            case 49:
+                ToastUtil.show(this, "拍背");
+//                strXList.add("拍背");
+                break;
+            case 50:
+                ToastUtil.show(this, "刷床单");
+//                strXList.add("刷床单");
+                break;
+            case 51:
+                ToastUtil.show(this, "转床单");
+//                strXList.add("转床单");
+                break;
+            case 52:
+                ToastUtil.show(this, "擦胳膊");
+//                strXList.add("擦胳膊");
+                break;
+            case 53:
+                ToastUtil.show(this, "梳头");
+//                strXList.add("梳头");
+                break;
+        }
     }
 
     public void initChartView() {
@@ -177,4 +210,6 @@ public class DetailActivity extends BaseActivity {
             }
         });
     }
+
+
 }

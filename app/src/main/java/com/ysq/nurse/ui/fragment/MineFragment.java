@@ -25,9 +25,20 @@ public class MineFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.tv_logout})
+    @OnClick({R.id.tv_logout, R.id.view_about, R.id.view_todo, R.id.view_collect})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.view_collect:
+
+                break;
+            case R.id.view_todo:
+                //本月考勤
+
+                break;
+            case R.id.view_about:
+                //历史服务
+
+                break;
             case R.id.tv_logout:
                 JumpUtil.overlay(context, LoginActivity.class);
                 break;
