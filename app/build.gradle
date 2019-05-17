@@ -34,6 +34,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':FastBleLib')
+    implementation project(':OXViewLib')
 
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
@@ -66,7 +67,7 @@ dependencies {
     implementation 'com.ldoublem.loadingview:loadingviewlib:1.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
-    implementation 'com.openxu.viewlib:OXViewLib:1.0.2'
+//    implementation 'com.openxu.viewlib:OXViewLib:1.0.2'
     implementation 'com.github.baixxx:VerticalMarqueeView:v1.3'
 
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'

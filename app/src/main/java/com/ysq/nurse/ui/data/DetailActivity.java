@@ -16,17 +16,13 @@ import com.clj.fastble.utils.HexUtil;
 import com.openxu.cview.chart.barchart.BarHorizontalChart;
 import com.openxu.cview.chart.bean.BarBean;
 import com.openxu.utils.DensityUtil;
-import com.ysq.nurse.MainActivity;
 import com.ysq.nurse.R;
 import com.ysq.nurse.base.BaseActivity;
-import com.ysq.nurse.ui.login.LoginActivity;
-import com.ysq.nurse.util.JumpUtil;
 import com.ysq.nurse.util.TitleBar;
 import com.ysq.nurse.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -44,6 +40,7 @@ public class DetailActivity extends BaseActivity {
 
     BarHorizontalChart chart1;
     List<List<BarBean>> dataList;
+    List<String> strXList;
 
     @Override
     protected int getLayoutId() {
@@ -138,52 +135,63 @@ public class DetailActivity extends BaseActivity {
     }
 
     public void notifyData(int type) {
+        List<BarBean> list = new ArrayList<>();
+        BarBean b = null;
+        int index =0;
         switch (type) {
             case 49:
                 ToastUtil.showLong(this, "拍背");
-//                strXList.add("拍背");
+                index =0;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
                 break;
             case 50:
                 ToastUtil.showLong(this, "刷床单");
-//                strXList.add("刷床单");
+                index =1;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
                 break;
             case 51:
                 ToastUtil.showLong(this, "转床单");
-//                strXList.add("转床单");
+                index =2;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
                 break;
             case 52:
                 ToastUtil.showLong(this, "擦胳膊");
-//                strXList.add("擦胳膊");
+                index =3;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
                 break;
             case 53:
                 ToastUtil.showLong(this, "梳头");
-//                strXList.add("梳头");
+                index =4;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
+                break;
+            default:
+                index =0;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
                 break;
         }
+
+        list.add(b);
+        dataList.set(index, list);
+        chart1.refresh(dataList);
     }
 
     public void initChartView() {
-        Random random = new Random();
+        //X轴
+        strXList = new ArrayList<>();
+//        //柱状图数据
+        dataList = new ArrayList<>();
+
         chart1 = findViewById(R.id.chart1);
-//        chart1.setBarSpace(DensityUtil.dip2px(this, 1));  //双柱间距
-        chart1.setBarItemSpace(DensityUtil.dip2px(this, 5));  //柱间距
         chart1.setDebug(false);
-        chart1.setBarNum(2);
-//        chart1.setBarColor(new int[]{Color.parseColor("#5F93E7"), Color.parseColor("#F28D02")});
+        chart1.setLoading(true);
+        chart1.setBarNum(1);
         chart1.setBarColor(new int[]{Color.parseColor("#5F93E7")});
 
-//X轴
-        List<String> strXList = new ArrayList<>();
-//柱状图数据
-        dataList = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             //此集合为柱状图上一条数据，集合中包含几个实体就是几个柱子
             List<BarBean> list = new ArrayList<>();
-            list.add(new BarBean(random.nextInt(30), "lable1"));
-//            list.add(new BarBean(random.nextInt(20), "lable2"));
+            list.add(new BarBean(0, "lable1"));
             dataList.add(list);
-//            strXList.add((i + 1) + "月");
-
             switch (i) {
                 case 0:
                     strXList.add("拍背");
@@ -204,17 +212,6 @@ public class DetailActivity extends BaseActivity {
         }
         chart1.setLoading(false);
         chart1.setData(dataList, strXList);
-
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                List<BarBean> li = new ArrayList<>();
-//                BarBean b = new BarBean(random.nextInt(60), "lable1");
-//                li.add(b);
-//                dataList.set(4, li);
-//                chart1.setData(dataList, strXList);
-//            }
-//        });
     }
 
 
