@@ -20,7 +20,7 @@ public class ConstantUtil {
     /**
      * 访问网络 基础 url
      */
-    public static final String BASE_URL = "https://www.wanandroid.com/";
+    public static final String BASE_URL = "http://47.103.50.214:8091/web/";
 
     /**
      * ssl key

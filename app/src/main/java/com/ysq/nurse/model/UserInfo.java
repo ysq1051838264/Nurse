@@ -12,76 +12,34 @@ import java.util.List;
 
 public class UserInfo {
     /**
-     * collectIds : []
-     * email :
-     * icon :
-     * id : 6853
-     * password : 000000
-     * type : 0
-     * username : qwerdf
+     {"id":20,"name":"yanyang","token":"eyJhbGciOiJIUzI1NiJ9.eyJvcGVuSWQiOiJXRUIiLCJ1c2VySWQiOjIwLCJpYXQiOjE1NTgxMTE5NDUsImp0aSI6ImE4YjQ0ODhjLWJjY2MtNGY5Mi1hOTE2LWNiOGFiOGIxZTYwZCJ9.lqQIdeWZ9qXCrrAJQcBWxjlVVC-48RXpf1EiGxuHu-Y"}
      */
 
-    private String email;
-    private String icon;
-    private int id;
-    private String password;
-    private int type;
-    private String username;
-    private List<?> collectIds;
+    private String id;
+    private String name;
+    private String token;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getPassword() {
-        return password;
+    public String getName() {
+        return name;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getType() {
-        return type;
+    public String getToken() {
+        return token;
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public List<?> getCollectIds() {
-        return collectIds;
-    }
-
-    public void setCollectIds(List<?> collectIds) {
-        this.collectIds = collectIds;
+    public void setToken(String token) {
+        this.token = token;
     }
 }

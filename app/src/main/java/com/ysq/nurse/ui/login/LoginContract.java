@@ -15,7 +15,7 @@ public class LoginContract {
 
     public interface Presenter extends BasePre<View> {
 
-        void login(String name, String password);
+        void login(String phone);
 
     }
 }
