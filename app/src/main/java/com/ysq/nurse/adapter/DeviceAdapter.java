@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.clj.fastble.BleManager;
 import com.clj.fastble.data.BleDevice;
 import com.ysq.nurse.R;
@@ -104,6 +105,10 @@ public class DeviceAdapter extends BaseAdapter {
         if (bleDevice != null) {
             boolean isConnected = BleManager.getInstance().isConnected(bleDevice);
             String name = bleDevice.getName();
+            if (name.contains("DTing")) {
+                name = "YanYang";
+            }
+
             String mac = bleDevice.getMac();
             int rssi = bleDevice.getRssi();
             holder.txt_name.setText(name);
