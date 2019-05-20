@@ -5,9 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 获取wifi状态 -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:name=".base.MyApplication"
@@ -35,10 +35,15 @@
         </activity>
 
         <activity android:name="com.ysq.nurse.MainActivity" />
-        <activity android:name="com.ysq.nurse.ui.login.LoginActivity" />
+        <activity
+            android:name="com.ysq.nurse.ui.login.LoginActivity"
+            android:launchMode="singleTop" />
         <activity android:name="com.ysq.nurse.ui.data.DetailActivity" />
         <activity android:name="com.ysq.nurse.ui.news.ui.ImageBrowseActivity" />
         <activity android:name="com.ysq.nurse.ui.news.ui.ArticleReadActivity" />
+        <activity android:name="com.ysq.nurse.ui.my.PersonActivity" />
+        <activity android:name="com.ysq.nurse.ui.my.CheckActivity" />
+        <activity android:name="com.ysq.nurse.ui.my.HistroyActivity" />
 
     </application>
 

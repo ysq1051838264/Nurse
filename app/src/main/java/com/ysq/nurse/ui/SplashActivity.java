@@ -7,7 +7,9 @@ import com.ysq.nurse.MainActivity;
 import com.ysq.nurse.R;
 import com.ysq.nurse.base.BaseActivity;
 import com.ysq.nurse.ui.login.LoginActivity;
+import com.ysq.nurse.util.ConstantUtil;
 import com.ysq.nurse.util.JumpUtil;
+import com.ysq.nurse.util.SharedPreferenceUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,8 +42,11 @@ public class SplashActivity extends BaseActivity {
                 .subscribeWith(new DisposableObserver<Long>() {
                     @Override
                     public void onNext(Long aLong) {
-//                        JumpUtil.overlay(SplashActivity.this, MainActivity.class);
-                        JumpUtil.overlay(SplashActivity.this, LoginActivity.class);
+                        String s1 = (String) SharedPreferenceUtil.get(getBaseContext(), ConstantUtil.USERNAME, "");
+                        if (s1 != null && s1.length() > 0) {
+                            JumpUtil.overlay(SplashActivity.this, MainActivity.class);
+                        } else
+                            JumpUtil.overlay(SplashActivity.this, LoginActivity.class);
                         finish();
                     }
 

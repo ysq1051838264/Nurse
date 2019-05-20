@@ -4,9 +4,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.ysq.nurse.MainActivity;
 import com.ysq.nurse.R;
 import com.ysq.nurse.base.BaseFragment;
 import com.ysq.nurse.ui.login.LoginActivity;
+import com.ysq.nurse.ui.my.CheckActivity;
+import com.ysq.nurse.ui.my.HistroyActivity;
+import com.ysq.nurse.ui.my.PersonActivity;
 import com.ysq.nurse.util.ConstantUtil;
 import com.ysq.nurse.util.JumpUtil;
 import com.ysq.nurse.util.SharedPreferenceUtil;
@@ -36,19 +40,21 @@ public class MineFragment extends BaseFragment {
     @OnClick({R.id.tv_logout, R.id.view_about, R.id.view_todo, R.id.view_collect})
     public void onClick(View view) {
         switch (view.getId()) {
+            //个人信息
             case R.id.view_collect:
-
+                JumpUtil.overlay(getContext(), PersonActivity.class);
                 break;
             case R.id.view_todo:
                 //本月考勤
-
+                JumpUtil.overlay(getContext(), CheckActivity.class);
                 break;
             case R.id.view_about:
                 //历史服务
-
+                JumpUtil.overlay(getContext(), HistroyActivity.class);
                 break;
             case R.id.tv_logout:
                 JumpUtil.overlay(context, LoginActivity.class);
+                SharedPreferenceUtil.clear(context);
                 break;
         }
     }

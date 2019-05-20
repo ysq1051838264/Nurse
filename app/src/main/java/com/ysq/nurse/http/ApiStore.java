@@ -4,9 +4,11 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ysq.nurse.base.MyApplication;
 import com.ysq.nurse.http.cookie.CookiesManager;
 import com.ysq.nurse.http.cookie.HttpLoggingInterceptor;
 import com.ysq.nurse.util.ConstantUtil;
+import com.ysq.nurse.util.SharedPreferenceUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +34,7 @@ public class ApiStore {
 
     public static String baseUrl = ConstantUtil.BASE_URL;
 
-    public static <T> T createApi(Class<T> service){
+    public static <T> T createApi(Class<T> service) {
         return retrofit.create(service);
     }
 
@@ -73,8 +75,31 @@ public class ApiStore {
                 .build();
     }
 
+
     /**
-     *  ssl 工厂类
+     * 公共参数
+     */
+    public static final Interceptor TokenInterceptor = new Interceptor() {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request originalRequest = chain.request();
+
+            String token = (String) SharedPreferenceUtil.get(MyApplication.getInstance().getBaseContext(), ConstantUtil.USER_TOKEN, "");
+            String s = "";
+            if (token != null && !token.equals("")) {
+                s = "Bearer " + token;
+            }
+            Request authorised = originalRequest.newBuilder()
+                    .header("Authorization", s)
+                    .build();
+            return chain.proceed(authorised);
+        }
+    };
+
+
+    /**
+     * ssl 工厂类
+     *
      * @param certificates certificates
      * @return SSLSocketFactory
      */
@@ -89,7 +114,7 @@ public class ApiStore {
                 keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate(certificate));
 
                 try {
-                    if (certificate != null){
+                    if (certificate != null) {
                         certificate.close();
                     }
                 } catch (IOException e) {

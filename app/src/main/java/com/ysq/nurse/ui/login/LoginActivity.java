@@ -66,6 +66,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public void loginOk(UserInfo userInfo) {
         ToastUtil.show(activity, "登陆成功");
         SharedPreferenceUtil.put(activity, ConstantUtil.USERNAME, userInfo.getName());
+        SharedPreferenceUtil.put(activity, ConstantUtil.USER_TOKEN, userInfo.getToken());
         JumpUtil.overlay(LoginActivity.this, MainActivity.class);
         finish();
     }
