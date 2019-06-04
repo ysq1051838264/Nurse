@@ -219,7 +219,7 @@ public class DetailActivity extends BaseActivity {
             s = s + dataList.get(i).get(0).getScore();
         }
 
-        all.setText(String.format("综合质量评分: %s", s / 5));
+        all.setText(String.format("综合质量评分: %s 分", s / 5));
     }
 
     public void initChartView() {

@@ -11,7 +11,7 @@
         android:id="@+id/chart1"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="#ffffff"
         android:padding="10dp" />
 
@@ -25,14 +25,14 @@
         android:id="@+id/recycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10" />
+        android:layout_marginTop="@dimen/dp_8" />
 
     <TextView
         android:id="@+id/all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_8"
         android:text="综合质量评分:" />
 
     <Button
