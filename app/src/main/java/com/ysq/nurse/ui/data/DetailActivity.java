@@ -3,9 +3,14 @@ package com.ysq.nurse.ui.data;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleNotifyCallback;
@@ -15,14 +20,15 @@ import com.clj.fastble.exception.BleException;
 import com.clj.fastble.utils.HexUtil;
 import com.openxu.cview.chart.barchart.BarHorizontalChart;
 import com.openxu.cview.chart.bean.BarBean;
-import com.openxu.utils.DensityUtil;
 import com.ysq.nurse.R;
+import com.ysq.nurse.adapter.ScoreAdapter;
 import com.ysq.nurse.base.BaseActivity;
 import com.ysq.nurse.util.TitleBar;
 import com.ysq.nurse.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,14 +39,22 @@ public class DetailActivity extends BaseActivity {
     String UUID_CHARACTERISTIC_WRITE = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
     String UUID_CHARACTERISTIC_NOTIFY = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
+    public static final int START = 75;   //定义范围开始数字
+    public static final int END = 100; //定义范围结束数字
+
     private BleDevice bleDevice;
 
     @BindView(R.id.btn)
     Button button;
+    @BindView(R.id.recycle)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.all)
+    TextView all;
 
     BarHorizontalChart chart1;
     List<List<BarBean>> dataList;
     List<String> strXList;
+    ScoreAdapter adpter;
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +71,16 @@ public class DetailActivity extends BaseActivity {
         });
     }
 
+    private void initRecycler() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+
+        adpter = new ScoreAdapter(this, dataList);
+        mRecyclerView.setAdapter(adpter);
+    }
+
     @Override
     protected void initData() {
         bleDevice = getIntent().getParcelableExtra(KEY_DATA);
@@ -64,6 +88,8 @@ public class DetailActivity extends BaseActivity {
             return;
 
         initChartView();
+
+        initRecycler();
 
         byte[] input = {0x3c, 0x3c, 0x31, 0x31, 0x30, 0x3e, 0x3e};
 
@@ -134,45 +160,66 @@ public class DetailActivity extends BaseActivity {
                 });
     }
 
+    public int getScore() {
+        Random random = new Random();
+        int number = random.nextInt(END - START + 1) + START;
+        return number;
+    }
+
     public void notifyData(int type) {
         List<BarBean> list = new ArrayList<>();
         BarBean b = null;
-        int index =0;
+        int index = 0;
         switch (type) {
             case 49:
                 ToastUtil.showLong(this, "拍背");
-                index =0;
-                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
+                index = 0;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背", getScore());
                 break;
             case 50:
                 ToastUtil.showLong(this, "刷床单");
-                index =1;
-                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
+                index = 1;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "刷床单", getScore());
                 break;
             case 51:
                 ToastUtil.showLong(this, "转床单");
-                index =2;
-                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
+                index = 2;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "转床单", getScore());
                 break;
             case 52:
                 ToastUtil.showLong(this, "擦胳膊");
-                index =3;
-                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
+                index = 3;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "擦胳膊", getScore());
                 break;
             case 53:
                 ToastUtil.showLong(this, "梳头");
-                index =4;
-                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
+                index = 4;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "梳头", getScore());
                 break;
             default:
-                index =0;
-                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背");
+                index = 0;
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "拍背", getScore());
                 break;
         }
 
         list.add(b);
         dataList.set(index, list);
         chart1.refresh(dataList);
+
+        if (adpter != null)
+            adpter.notifyDataSetChanged();
+
+        culatureScore();
+    }
+
+    private void culatureScore() {
+        int s = 0;
+
+        for (int i = 0; i < dataList.size(); i++) {
+            s = s + dataList.get(i).get(0).getScore();
+        }
+
+        all.setText(String.format("综合质量评分: %s", s / 5));
     }
 
     public void initChartView() {
@@ -190,8 +237,27 @@ public class DetailActivity extends BaseActivity {
         for (int i = 0; i < 5; i++) {
             //此集合为柱状图上一条数据，集合中包含几个实体就是几个柱子
             List<BarBean> list = new ArrayList<>();
-            list.add(new BarBean(0, "lable1"));
+            String s = "lable1";
+            switch (i) {
+                case 0:
+                    s = "拍背";
+                    break;
+                case 1:
+                    s = "刷床单";
+                    break;
+                case 2:
+                    s = "转床单";
+                    break;
+                case 3:
+                    s = "擦胳膊";
+                    break;
+                case 4:
+                    s = "梳头";
+                    break;
+            }
+            list.add(new BarBean(0, s, 0));
             dataList.add(list);
+
             switch (i) {
                 case 0:
                     strXList.add("拍背");

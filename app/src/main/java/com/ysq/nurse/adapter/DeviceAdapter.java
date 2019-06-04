@@ -105,7 +105,7 @@ public class DeviceAdapter extends BaseAdapter {
         if (bleDevice != null) {
             boolean isConnected = BleManager.getInstance().isConnected(bleDevice);
             String name = bleDevice.getName();
-            if (name.contains("DTing")) {
+            if (name != null && name.contains("DTing")) {
                 name = "YanYang";
             }
 

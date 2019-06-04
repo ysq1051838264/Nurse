@@ -13,6 +13,16 @@ import android.graphics.Region;
 public class BarBean {
 
     private float num;
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    private int score;
     private String name;
 
     //bar绘制矩形
@@ -31,9 +41,10 @@ public class BarBean {
     public BarBean() {
     }
 
-    public BarBean(float num, String name) {
+    public BarBean(float num, String name,int score) {
         this.num = num;
         this.name = name;
+        this.score = score;
     }
     public float getNum() {
         return num;

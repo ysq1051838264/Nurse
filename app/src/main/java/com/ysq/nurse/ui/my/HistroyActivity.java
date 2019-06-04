@@ -61,11 +61,11 @@ public class HistroyActivity extends BaseActivity {
         for(int i = 0; i<5; i++){
             //此集合为柱状图上一条数据，集合中包含几个实体就是几个柱子
             List<BarBean> list = new ArrayList<>();
-            list.add(new BarBean(random.nextInt(30), "拍背"));
-            list.add(new BarBean(random.nextInt(20), "刷床单"));
-            list.add(new BarBean(random.nextInt(35), "转床单"));
-            list.add(new BarBean(random.nextInt(28), "擦胳膊"));
-            list.add(new BarBean(random.nextInt(28), "梳头"));
+            list.add(new BarBean(random.nextInt(30), "拍背",0));
+            list.add(new BarBean(random.nextInt(20), "刷床单",0));
+            list.add(new BarBean(random.nextInt(35), "转床单",0));
+            list.add(new BarBean(random.nextInt(28), "擦胳膊",0));
+            list.add(new BarBean(random.nextInt(28), "梳头",0));
             dataList.add(list);
             strXList.add((i+1)+"月1日");
         }
