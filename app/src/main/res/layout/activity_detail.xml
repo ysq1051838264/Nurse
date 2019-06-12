@@ -7,11 +7,17 @@
 
     <include layout="@layout/titlebar" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:text="本次动作次数如下:" />
+
     <com.openxu.cview.chart.barchart.BarHorizontalChart
         android:id="@+id/chart1"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:padding="10dp" />
 
@@ -38,6 +44,7 @@
     <Button
         android:id="@+id/btn"
         style="@style/theme_bg"
+        android:layout_width="300dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:text="结束服务(打卡)"

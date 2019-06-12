@@ -209,7 +209,19 @@ public class DetailActivity extends BaseActivity {
         if (adpter != null)
             adpter.notifyDataSetChanged();
 
-        culatureScore();
+//        culatureScore();
+        getAllScore(b);
+    }
+
+    int allScore = 0;
+    int allNum = 0;
+
+    public void getAllScore(BarBean b) {
+        allScore = allScore + b.getScore();
+        allNum = allNum + 1;
+        if (allScore > 0) {
+            all.setText(String.format("综合质量评分: %s%s", allScore / allNum,"%"));
+        }
     }
 
     private void culatureScore() {
@@ -219,7 +231,7 @@ public class DetailActivity extends BaseActivity {
             s = s + dataList.get(i).get(0).getScore();
         }
 
-        all.setText(String.format("综合质量评分: %s ", s / 5));
+        all.setText(String.format("综合质量评分: %s %", s / 5));
     }
 
     public void initChartView() {
