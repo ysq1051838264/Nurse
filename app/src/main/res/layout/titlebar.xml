@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginTop="20dp"
-            android:drawableStart="@drawable/ic_back"
+            android:drawableStart="@mipmap/btn_back"
             android:drawablePadding="10dp"
             android:minHeight="80dp"
             android:paddingStart="15dp"

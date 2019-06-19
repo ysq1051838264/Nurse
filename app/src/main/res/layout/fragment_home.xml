@@ -37,7 +37,7 @@
         android:id="@+id/scan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
     <Button
         android:id="@+id/btn"
         style="@style/theme_bg"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:text="开始服务(打卡)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

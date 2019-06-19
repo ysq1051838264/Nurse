@@ -220,7 +220,7 @@ public class DetailActivity extends BaseActivity {
     public void getAllScore(BarBean b) {
         allScore = allScore + b.getScore();
         allNum = allNum + 1;
-        if (allScore > 0) {
+        if (all!=null && allScore > 0) {
             all.setText(String.format("综合质量评分: %s%s", allScore / allNum, "%"));
         }
     }

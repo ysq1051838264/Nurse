@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="@dimen/dp_5"
         android:text="本次护理动作如下:"
         android:textColor="#333" />
 
