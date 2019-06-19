@@ -10,6 +10,7 @@
     <!--字体颜色-->
     <color name="text_color_def">#5E5E5E</color>
     <color name="text_color_light_gray">#939393</color>
+    <color name="text_666666">#666666</color>
     <!--辅助色-->
     <color name="color_red">#db4527</color>
     <color name="color_yellow">#fda33c</color>

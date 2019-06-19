@@ -11,12 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
-        android:text="本次动作次数如下:" />
+        android:layout_marginTop="5dp"
+        android:text="本次护理动作如下:"
+        android:textColor="#333" />
 
     <com.openxu.cview.chart.barchart.BarHorizontalChart
         android:id="@+id/chart1"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="160dp"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:padding="10dp" />
@@ -25,11 +27,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
-        android:text="本次动作质量评分如下:" />
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="本次动作质量评分如下:"
+        android:textColor="#333" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8" />
 
@@ -38,15 +42,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_8"
-        android:text="综合质量评分:" />
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="综合质量评分:"
+        android:textColor="@color/theme" />
 
     <Button
         android:id="@+id/btn"
         style="@style/theme_bg"
         android:layout_width="300dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="结束服务(打卡)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

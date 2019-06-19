@@ -23,6 +23,7 @@ import com.openxu.cview.chart.bean.BarBean;
 import com.ysq.nurse.R;
 import com.ysq.nurse.adapter.ScoreAdapter;
 import com.ysq.nurse.base.BaseActivity;
+import com.ysq.nurse.ui.util.SimpleDividerItemDecoration;
 import com.ysq.nurse.util.TitleBar;
 import com.ysq.nurse.util.ToastUtil;
 
@@ -75,7 +76,7 @@ public class DetailActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(this, 20, 1));
 
         adpter = new ScoreAdapter(this, dataList);
         mRecyclerView.setAdapter(adpter);
@@ -220,7 +221,7 @@ public class DetailActivity extends BaseActivity {
         allScore = allScore + b.getScore();
         allNum = allNum + 1;
         if (allScore > 0) {
-            all.setText(String.format("综合质量评分: %s%s", allScore / allNum,"%"));
+            all.setText(String.format("综合质量评分: %s%s", allScore / allNum, "%"));
         }
     }
 

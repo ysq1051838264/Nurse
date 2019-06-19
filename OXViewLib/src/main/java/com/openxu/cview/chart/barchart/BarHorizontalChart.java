@@ -44,15 +44,15 @@ public class BarHorizontalChart extends BaseChart {
     private int barNum = 2;   //柱子数量
     private int XMARK_NUM = 5;    //X轴刻度数量
 
-    private int barWidth = DensityUtil.dip2px(getContext(), 15);    //柱宽度
+    private int barWidth = DensityUtil.dip2px(getContext(), 12);    //柱宽度
     private int barSpace = DensityUtil.dip2px(getContext(), 1);    //双柱间的间距
-    private int barItemSpace = DensityUtil.dip2px(getContext(), 25);//一组柱之间的间距
+    private int barItemSpace = DensityUtil.dip2px(getContext(), 15);//一组柱之间的间距
     private int[] barColor = new int[]{Color.BLUE, Color.YELLOW};               //柱颜色
 
     private int textSizeCoordinate = (int) getResources().getDimension(R.dimen.text_size_level_small); //坐标文字大小
-    private int textColorCoordinate = getResources().getColor(R.color.text_color_light_gray);
+    private int textColorCoordinate = getResources().getColor(R.color.text_666666);
     private int textSizeTag = (int) getResources().getDimension(R.dimen.text_size_level_small); //数值字体
-    private int textColorTag = getResources().getColor(R.color.text_color_light_gray);
+    private int textColorTag = getResources().getColor(R.color.text_666666);
 
     private int textSpace = DensityUtil.dip2px(getContext(), 3);         //默认的字与其他的间距
 
@@ -60,7 +60,7 @@ public class BarHorizontalChart extends BaseChart {
      * 需要计算相关值
      */
     private int oneBarW;            //单个宽度,需要计算
-    private int YMARK_MAX_WIDTH = DensityUtil.dip2px(getContext(), 30);    //Y轴刻度最大值的宽度
+    private int YMARK_MAX_WIDTH = DensityUtil.dip2px(getContext(), 20);    //Y轴刻度最大值的宽度
     private int XMARK_H, XMARK_ALL_H;            //Y轴刻度间距值
     private int topStartPointY;    //从左侧开始绘制的X坐标
     private int minTopPointY;      //滑动到最右侧时的X坐标
