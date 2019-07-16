@@ -65,7 +65,7 @@ public class HistroyActivity extends BaseActivity {
             list.add(new BarBean(random.nextInt(20), "刷床单",0));
             list.add(new BarBean(random.nextInt(35), "转床单",0));
             list.add(new BarBean(random.nextInt(28), "擦胳膊",0));
-            list.add(new BarBean(random.nextInt(28), "梳头",0));
+            list.add(new BarBean(random.nextInt(28), "擦背",0));
             dataList.add(list);
             strXList.add((i+1)+"月1日");
         }

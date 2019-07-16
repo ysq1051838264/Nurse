@@ -193,9 +193,9 @@ public class DetailActivity extends BaseActivity {
                 b = new BarBean(dataList.get(index).get(0).getNum() + 1, "擦胳膊", getScore());
                 break;
             case 53:
-                ToastUtil.showLong(this, "梳头");
+                ToastUtil.showLong(this, "擦背");
                 index = 4;
-                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "梳头", getScore());
+                b = new BarBean(dataList.get(index).get(0).getNum() + 1, "擦背", getScore());
                 break;
             default:
                 index = 0;
@@ -265,7 +265,7 @@ public class DetailActivity extends BaseActivity {
                     s = "擦胳膊";
                     break;
                 case 4:
-                    s = "梳头";
+                    s = "擦背";
                     break;
             }
             list.add(new BarBean(0, s, 0));
@@ -285,7 +285,7 @@ public class DetailActivity extends BaseActivity {
                     strXList.add("擦胳膊");
                     break;
                 case 4:
-                    strXList.add("梳头");
+                    strXList.add("擦背");
                     break;
             }
         }
