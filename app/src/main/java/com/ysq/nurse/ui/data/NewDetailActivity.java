@@ -167,6 +167,13 @@ public class NewDetailActivity extends Activity implements RadioGroup.OnCheckedC
                 initBleData();
             }
         });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public int getScore() {
