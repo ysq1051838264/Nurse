@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ysq.nurse">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取网络状态 -->
@@ -33,7 +36,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.ysq.nurse.ui.data.DeviceListActivity"  android:theme="@android:style/Theme.Dialog"/>
+
+        <service android:enabled="true" android:name="com.ysq.nurse.ui.data.UartService" />
+
         <activity android:name="com.ysq.nurse.MainActivity" />
+
+        <activity android:name="com.ysq.nurse.ui.data.NewDetailActivity" />
+
         <activity
             android:name="com.ysq.nurse.ui.login.LoginActivity"
             android:launchMode="singleTop" />

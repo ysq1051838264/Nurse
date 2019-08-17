@@ -3,8 +3,8 @@
     package="com.clj.fastble.test" >
 
     <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="26" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"

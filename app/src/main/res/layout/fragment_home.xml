@@ -35,6 +35,7 @@
 
     <RelativeLayout
         android:id="@+id/scan"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -62,6 +63,7 @@
     </RelativeLayout>
 
     <ListView
+        android:visibility="gone"
         android:id="@+id/list_device"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

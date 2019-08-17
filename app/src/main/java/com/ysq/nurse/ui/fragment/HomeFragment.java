@@ -37,6 +37,7 @@ import com.ysq.nurse.adapter.DeviceAdapter;
 import com.ysq.nurse.base.BaseFragment;
 import com.ysq.nurse.comm.ObserverManager;
 import com.ysq.nurse.ui.data.DetailActivity;
+import com.ysq.nurse.ui.data.NewDetailActivity;
 import com.ysq.nurse.util.TitleBar;
 import com.ysq.nurse.util.ToastUtil;
 
@@ -81,12 +82,12 @@ public class HomeFragment extends BaseFragment {
 
         initAd();
 
-        BleManager.getInstance().init(context);
-        BleManager.getInstance()
-                .enableLog(true)
-                .setReConnectCount(1, 5000)
-                .setConnectOverTime(20000)
-                .setOperateTimeout(5000);
+//        BleManager.getInstance().init(context);
+//        BleManager.getInstance()
+//                .enableLog(true)
+//                .setReConnectCount(1, 5000)
+//                .setConnectOverTime(20000)
+//                .setOperateTimeout(5000);
 
         operatingAnim = AnimationUtils.loadAnimation(getContext(), R.anim.rotate);
         operatingAnim.setInterpolator(new LinearInterpolator());
@@ -133,12 +134,13 @@ public class HomeFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn:
-                if (ble != null && BleManager.getInstance().isConnected(ble)) {
-                    Intent intent = new Intent(getContext(), DetailActivity.class);
-                    intent.putExtra(DetailActivity.KEY_DATA, ble);
-                    startActivity(intent);
-                } else
-                    ToastUtil.showLong(getContext(), "请先连接手环，在打卡");
+//                if (ble != null && BleManager.getInstance().isConnected(ble)) {
+//                    Intent intent = new Intent(getContext(), DetailActivity.class);
+//                    intent.putExtra(DetailActivity.KEY_DATA, ble);
+//                    startActivity(intent);
+//                } else
+//                    ToastUtil.showLong(getContext(), "请先连接手环，在打卡");
+                startActivity(new Intent(getContext(), NewDetailActivity.class));
                 break;
             case R.id.btn_scan:
                 if (btn_scan.getText().equals(getString(R.string.start_scan))) {
@@ -290,13 +292,13 @@ public class HomeFragment extends BaseFragment {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case REQUEST_CODE_PERMISSION_LOCATION:
-                if (grantResults.length > 0) {
-                    for (int i = 0; i < grantResults.length; i++) {
-                        if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                            onPermissionGranted(permissions[i]);
-                        }
-                    }
-                }
+//                if (grantResults.length > 0) {
+//                    for (int i = 0; i < grantResults.length; i++) {
+//                        if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+//                            onPermissionGranted(permissions[i]);
+//                        }
+//                    }
+//                }
                 break;
         }
     }
