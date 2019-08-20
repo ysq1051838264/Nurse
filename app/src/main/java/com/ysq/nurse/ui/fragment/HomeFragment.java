@@ -89,38 +89,38 @@ public class HomeFragment extends BaseFragment {
 //                .setConnectOverTime(20000)
 //                .setOperateTimeout(5000);
 
-        operatingAnim = AnimationUtils.loadAnimation(getContext(), R.anim.rotate);
-        operatingAnim.setInterpolator(new LinearInterpolator());
-        progressDialog = new ProgressDialog(getContext());
-
-        mDeviceAdapter = new DeviceAdapter(getContext());
-        mDeviceAdapter.setOnDeviceClickListener(new DeviceAdapter.OnDeviceClickListener() {
-            @Override
-            public void onConnect(BleDevice bleDevice) {
-                ble = bleDevice;
-                if (!BleManager.getInstance().isConnected(bleDevice)) {
-                    BleManager.getInstance().cancelScan();
-                    connect(bleDevice);
-                }
-            }
-
-            @Override
-            public void onDisConnect(final BleDevice bleDevice) {
-                if (BleManager.getInstance().isConnected(bleDevice)) {
-                    BleManager.getInstance().disconnect(bleDevice);
-                }
-            }
-
-            @Override
-            public void onDetail(BleDevice bleDevice) {
-                if (BleManager.getInstance().isConnected(bleDevice)) {
-                    Intent intent = new Intent(getContext(), DetailActivity.class);
-                    intent.putExtra(DetailActivity.KEY_DATA, bleDevice);
-                    startActivity(intent);
-                }
-            }
-        });
-        listView_device.setAdapter(mDeviceAdapter);
+//        operatingAnim = AnimationUtils.loadAnimation(getContext(), R.anim.rotate);
+//        operatingAnim.setInterpolator(new LinearInterpolator());
+//        progressDialog = new ProgressDialog(getContext());
+//
+//        mDeviceAdapter = new DeviceAdapter(getContext());
+//        mDeviceAdapter.setOnDeviceClickListener(new DeviceAdapter.OnDeviceClickListener() {
+//            @Override
+//            public void onConnect(BleDevice bleDevice) {
+//                ble = bleDevice;
+//                if (!BleManager.getInstance().isConnected(bleDevice)) {
+//                    BleManager.getInstance().cancelScan();
+//                    connect(bleDevice);
+//                }
+//            }
+//
+//            @Override
+//            public void onDisConnect(final BleDevice bleDevice) {
+//                if (BleManager.getInstance().isConnected(bleDevice)) {
+//                    BleManager.getInstance().disconnect(bleDevice);
+//                }
+//            }
+//
+//            @Override
+//            public void onDetail(BleDevice bleDevice) {
+//                if (BleManager.getInstance().isConnected(bleDevice)) {
+//                    Intent intent = new Intent(getContext(), DetailActivity.class);
+//                    intent.putExtra(DetailActivity.KEY_DATA, bleDevice);
+//                    startActivity(intent);
+//                }
+//            }
+//        });
+//        listView_device.setAdapter(mDeviceAdapter);
     }
 
     private void initAd() {
@@ -143,11 +143,11 @@ public class HomeFragment extends BaseFragment {
                 startActivity(new Intent(getContext(), NewDetailActivity.class));
                 break;
             case R.id.btn_scan:
-                if (btn_scan.getText().equals(getString(R.string.start_scan))) {
-                    checkPermissions();
-                } else if (btn_scan.getText().equals(getString(R.string.stop_scan))) {
-                    BleManager.getInstance().cancelScan();
-                }
+//                if (btn_scan.getText().equals(getString(R.string.start_scan))) {
+//                    checkPermissions();
+//                } else if (btn_scan.getText().equals(getString(R.string.stop_scan))) {
+//                    BleManager.getInstance().cancelScan();
+//                }
                 break;
         }
     }
@@ -155,8 +155,8 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BleManager.getInstance().disconnectAllDevice();
-        BleManager.getInstance().destroy();
+//        BleManager.getInstance().disconnectAllDevice();
+//        BleManager.getInstance().destroy();
     }
 
     private void startScan() {
@@ -346,12 +346,12 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_OPEN_GPS) {
-            if (checkGPSIsOpen()) {
-                setScanRule();
-                startScan();
-            }
-        }
+//        if (requestCode == REQUEST_CODE_OPEN_GPS) {
+//            if (checkGPSIsOpen()) {
+//                setScanRule();
+//                startScan();
+//            }
+//        }
     }
 
 
